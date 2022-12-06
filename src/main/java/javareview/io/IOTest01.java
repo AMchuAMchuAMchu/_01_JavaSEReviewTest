@@ -31,7 +31,7 @@ public class IOTest01 {
             int len;
             while ((len = fr.read(chars))!=-1){
                 for (int i = 0; i < len; i++) {
-                    System.out.print(chars);
+                    System.out.print(chars[i]);
                 }
             }
         } catch (IOException e) {
