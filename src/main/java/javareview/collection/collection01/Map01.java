@@ -6,9 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Description ==> TODO
@@ -19,6 +17,41 @@ import java.util.Properties;
  * Author ==> _02雪乃赤瞳楪祈校条祭_艾米丽可锦木千束木更七草荠_制作委员会_start
  */
 public class Map01 {
+
+
+
+
+    @Test
+    public void testCollections(){
+
+        List<String> objs = new ArrayList<>();
+
+        objs.add("52002");
+        objs.add("zero two");
+        objs.add("伊丽莎白");
+        objs.add("楪祈");
+
+
+        objs.forEach(System.out::println);
+
+        System.out.println("===============");
+        System.out.println("===============");
+
+//        Collections.reverse(objs);
+
+//        Collections.sort(objs);
+
+        String max = Collections.max(objs);
+
+        System.out.println(max);
+
+//        objs.forEach(System.out::println);
+
+
+
+
+
+    }
 
 
 
