@@ -2,7 +2,10 @@ package javareview.io;
 
 import org.junit.Test;
 
+import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 
 /**
@@ -18,14 +21,44 @@ public class IOTest01 {
 
 
     @Test
+    public void testFileRead02(){
+
+        FileReader fr = null;
+        try {
+            fr = new FileReader("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\anime.txt");
+
+            char[] chars = new char[10];
+            int len;
+            while ((len = fr.read(chars))!=-1){
+                for (int i = 0; i < len; i++) {
+                    System.out.print(chars);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (fr!=null){
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
+
+    @Test
     public void testFileRead() throws IOException {
 
         FileReader fr = new FileReader("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\anime.txt");
-        int len;
-        byte[] bytes = new byte[1024];
+        int read = fr.read();
 
-        while ((len = fr.read())!=-1){
-            System.out.print(fr.read());
+        while (read != -1){
+            System.out.print((char) read);
+            read = fr.read();
         }
 
         fr.close();
