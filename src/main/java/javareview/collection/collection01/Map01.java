@@ -2,6 +2,7 @@ package javareview.collection.collection01;
 
 import org.junit.Test;
 
+import javax.sound.midi.Soundbank;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,27 +25,41 @@ public class Map01 {
     @Test
     public void testCollections(){
 
-        List<Integer> objs = new ArrayList<>();
+//        List<Integer> objs = new ArrayList<>();
+        List<String> objs = new ArrayList<>();
 //
-//        objs.add("52002");
-//        objs.add("zero two");
-//        objs.add("伊丽莎白");
-//        objs.add("楪祈");
+        objs.add("52002");
+        objs.add("zero two");
+        objs.add("伊丽莎白");
+        objs.add("楪祈");
 
-        objs.add(123);
-        objs.add(34);
-        objs.add(34);
-        objs.add(34);
-        objs.add(34);
-        objs.add(946);
-        objs.add(88);
-        objs.add(1);
+//        objs.add(123);
+//        objs.add(34);
+//        objs.add(34);
+//        objs.add(34);
+//        objs.add(34);
+//        objs.add(946);
+//        objs.add(88);
+//        objs.add(1);
 
 
-        objs.forEach(System.out::println);
+//        objs.forEach(System.out::println);
 
-        System.out.println("===============");
-        System.out.println("===============");
+//        System.out.println("===============");
+//        System.out.println("===============");
+
+        Object[] objects = new Object[10];
+        Arrays.fill(objects,"");
+        List<Object> objects1 = Arrays.asList(objects);
+        objects1.forEach(System.out::println);
+
+        System.out.println("=======");
+        System.out.println("=======");
+
+        Collections.copy(objects1,objs);
+
+        objects1.forEach(System.out::println);
+
 
 //        Collections.reverse(objs);
 
@@ -54,7 +69,7 @@ public class Map01 {
 //
 //        System.out.println(max);
 
-        System.out.println(Collections.frequency(objs, 34));
+//        System.out.println(Collections.frequency(objs, 34));
 
 //        objs.forEach(System.out::println);
 
