@@ -48,8 +48,8 @@ public class Map01 {
 //        System.out.println("===============");
 //        System.out.println("===============");
 
-        Object[] objects = new Object[10];
-        Arrays.fill(objects,"");
+        Object[] objects = new Object[objs.size()];
+        Arrays.fill(objects,"1");
         List<Object> objects1 = Arrays.asList(objects);
         objects1.forEach(System.out::println);
 
