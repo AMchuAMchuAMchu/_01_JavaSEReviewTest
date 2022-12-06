@@ -20,6 +20,34 @@ public class IOTest01 {
 
 
 
+
+    @Test
+    public void testFileWriter01(){
+
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\anime_w.txt");
+
+            fw.write("楪祈....\n");
+            fw.write("我喜欢shiina,即使shiina喜欢的是sorata,我也依然喜欢shiina..");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fw!=null){
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+
+
+
+    }
+
     @Test
     public void testFileRead02(){
 
