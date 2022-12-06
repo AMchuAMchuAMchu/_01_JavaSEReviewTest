@@ -24,12 +24,21 @@ public class Map01 {
     @Test
     public void testCollections(){
 
-        List<String> objs = new ArrayList<>();
+        List<Integer> objs = new ArrayList<>();
+//
+//        objs.add("52002");
+//        objs.add("zero two");
+//        objs.add("伊丽莎白");
+//        objs.add("楪祈");
 
-        objs.add("52002");
-        objs.add("zero two");
-        objs.add("伊丽莎白");
-        objs.add("楪祈");
+        objs.add(123);
+        objs.add(34);
+        objs.add(34);
+        objs.add(34);
+        objs.add(34);
+        objs.add(946);
+        objs.add(88);
+        objs.add(1);
 
 
         objs.forEach(System.out::println);
@@ -41,9 +50,11 @@ public class Map01 {
 
 //        Collections.sort(objs);
 
-        String max = Collections.max(objs);
+//        Integer max = Collections.max(objs);
+//
+//        System.out.println(max);
 
-        System.out.println(max);
+        System.out.println(Collections.frequency(objs, 34));
 
 //        objs.forEach(System.out::println);
 
