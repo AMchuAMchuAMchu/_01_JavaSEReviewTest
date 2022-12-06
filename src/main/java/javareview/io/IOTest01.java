@@ -2,11 +2,7 @@ package javareview.io;
 
 import org.junit.Test;
 
-import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.GregorianCalendar;
 
 /**
  * Description ==> TODO
@@ -20,9 +16,155 @@ public class IOTest01 {
 
 
 
+    @Test
+    public void testObjectInput01(){
+
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\anime.txt"));
+
+            Object o = ois.readObject();
+
+            System.out.println(o);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (ois!=null){
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
 
     @Test
-    public void testFileWriter01(){
+    public void testObjectStream(){
+
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\anime.txt"));
+
+            Anime anime = new Anime();
+            anime.setName("Guilty Crown");
+            anime.setTime(2011);
+            anime.setC1("樱满集");
+            anime.setC2("楪祈");
+
+            oos.writeObject(anime);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (oos !=null){
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+
+    @Test
+    public void testChar01(){
+
+        char c1 = 97;
+
+        System.out.println(c1);
+
+    }
+
+    public static void main(String[] args) {
+        InputStreamReader isr = null;
+        try {
+            while (true) {
+
+                System.out.println("请输入:");
+                isr = new InputStreamReader(System.in);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String line = br.readLine();
+
+                System.out.println(line);
+                if ("e".equalsIgnoreCase(line) || "exit".equalsIgnoreCase(line)) {
+                    System.out.println("程序运行结束!!");
+                    br.close();
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (isr != null) {
+                try {
+                    isr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        }
+
+
+    }
+
+
+    @Test
+    public void testFileInputStream01() {
+
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        try {
+            fis = new FileInputStream("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\楪祈.jpg");
+
+            fos = new FileOutputStream("D:\\seldom\\rd\\JavaReview\\_01_JavaSEReviewTest\\src\\main\\java\\javareview\\io\\楪祈_copy01.jpg");
+
+            byte[] bytes = new byte[1024];
+
+            int len;
+
+            while ((len = fis.read(bytes)) != -1) {
+                fos.write(bytes, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
+
+
+    @Test
+    public void testFileWriter01() {
 
         FileWriter fw = null;
         try {
