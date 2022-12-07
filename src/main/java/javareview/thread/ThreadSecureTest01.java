@@ -16,17 +16,26 @@ public class ThreadSecureTest01 {
 
     public static int tickets = 100;
 
-    public void salesTickets(){
-        for (int i = 0; i < 100; i++) {
-//            try {
-//                TimeUnit.MILLISECONDS.sleep(10);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-            if (tickets>0){
-                System.out.println(Thread.currentThread().getName() + "::" + tickets--);
+    public static Object o = new Object();
+
+    public synchronized void salesTickets(){
+//    1.0    synchronized (o) {
+
+            for (int i = 0; i < 100; i++) {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (tickets > 0) {
+                    System.out.println(Thread.currentThread().getName() + "::" + tickets--);
+                }
             }
-        }
+
+
+
+//        }
+
     }
 
     public static void main(String[] args) {
