@@ -3,6 +3,7 @@ package javareview.thread;
 import com.sun.org.glassfish.external.statistics.Statistic;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Description ==> TODO
@@ -18,8 +19,14 @@ public class ThreadSecureTest01 {
 
     public static Object o = new Object();
 
-    public synchronized void salesTickets(){
-//    1.0    synchronized (o) {
+    ReentrantLock rl = new ReentrantLock();
+
+//    1.0 public synchronized void salesTickets(){
+    public void salesTickets(){
+//    2.0    synchronized (o) {
+
+        try {
+//            rl.lock();
 
             for (int i = 0; i < 100; i++) {
                 try {
@@ -31,7 +38,9 @@ public class ThreadSecureTest01 {
                     System.out.println(Thread.currentThread().getName() + "::" + tickets--);
                 }
             }
-
+        } finally {
+//            rl.unlock();
+        }
 
 
 //        }
