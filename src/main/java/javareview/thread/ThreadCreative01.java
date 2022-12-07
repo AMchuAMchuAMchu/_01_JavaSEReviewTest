@@ -3,9 +3,7 @@ package javareview.thread;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * Description ==> TODO
@@ -33,15 +31,30 @@ public class ThreadCreative01 {
 //        Thread thread = new Thread(t12);
 //        thread.start();
 
-        T13 t13 = new T13();
+//        T13 t13 = new T13();
+//
+//        FutureTask<Object> futureTask = new FutureTask<Object>(t13);
+//
+//        Thread thread13 = new Thread(futureTask);
+//
+//        thread13.start();
+//        System.out.println(futureTask.get());
 
-        FutureTask<Object> futureTask = new FutureTask<Object>(t13);
+        ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
-        Thread thread13 = new Thread(futureTask);
+        threadPool.submit(()->{
+            System.out.println(Thread.currentThread().getName()+"stay cool 尤吉欧01");
+        });
 
-        thread13.start();
-        System.out.println(futureTask.get());
+        threadPool.submit(()->{
+            System.out.println(Thread.currentThread().getName()+"stay cool 尤吉欧02");
+        });
 
+        threadPool.submit(()->{
+            System.out.println(Thread.currentThread().getName()+"stay cool 尤吉欧03");
+        });
+
+        threadPool.shutdown();
 
     }
 }
