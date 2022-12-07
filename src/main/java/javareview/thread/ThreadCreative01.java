@@ -2,6 +2,11 @@ package javareview.thread;
 
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 /**
  * Description ==> TODO
  * BelongsProject ==> _01_JavaSEReviewTest
@@ -12,11 +17,48 @@ import org.junit.Test;
  */
 public class ThreadCreative01 {
 
-    public static void main(String[] args) {
-        T11 t11 = new T11();
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+//        T11 t11 = new T11();
+//        T11 t12 = new T11();
+//        T11 t13 = new T11();
+//
+//        t11.start();
+//        System.out.println(t11.getName());
+//        t12.start();
+//        System.out.println(t12.getName());
+//        t13.start();
+//        System.out.println(t13.getName());
 
-        t11.start();
+//        T12 t12 = new T12();
+//        Thread thread = new Thread(t12);
+//        thread.start();
 
+        T13 t13 = new T13();
+
+        FutureTask<Object> futureTask = new FutureTask<Object>(t13);
+
+        Thread thread13 = new Thread(futureTask);
+
+        thread13.start();
+        System.out.println(futureTask.get());
+
+
+    }
+}
+
+class T13 implements Callable {
+    @Override
+    public Object call() throws Exception {
+        System.out.println("T13...");
+        return LocalDateTime.now();
+    }
+}
+
+class T12 implements Runnable{
+
+    @Override
+    public void run() {
+        System.out.println("T12...");
     }
 }
 
