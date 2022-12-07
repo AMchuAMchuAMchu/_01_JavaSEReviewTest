@@ -26,7 +26,7 @@ public class ThreadSecureTest01 {
 //    2.0    synchronized (o) {
 
         try {
-//            rl.lock();
+            rl.lock();
 
             for (int i = 0; i < 100; i++) {
                 try {
@@ -39,7 +39,7 @@ public class ThreadSecureTest01 {
                 }
             }
         } finally {
-//            rl.unlock();
+            rl.unlock();
         }
 
 
