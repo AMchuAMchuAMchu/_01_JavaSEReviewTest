@@ -30,7 +30,7 @@ public class ThreadSecureTest01 {
 
         try {
 //            rl.lock();
-//            rrwl.lock();
+            rrwl.lock();
 
             for (int i = 0; i < 100; i++) {
                 try {
@@ -44,7 +44,7 @@ public class ThreadSecureTest01 {
             }
         } finally {
 //            rl.unlock();
-//            rrwl.lock();
+            rrwl.lock();
         }
 
 
