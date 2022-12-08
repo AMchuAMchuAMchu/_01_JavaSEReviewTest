@@ -21,7 +21,7 @@ public class Reflect01 {
 
         Class<Student> studentClass = Student.class;
 
-        Constructor<Student> constructor = studentClass.getConstructor(Student.class);
+        Constructor<Student> constructor = studentClass.getConstructor();
 
         Student student = constructor.newInstance();
 
