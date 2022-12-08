@@ -46,16 +46,29 @@ public class Reflect01 {
 //        System.out.println(student1);
 
 //        3.0
-        Class<?> aClass = Class.forName("javareview.reflect.Student");
+//        Class<?> aClass = Class.forName("javareview.reflect.Student");
+//
+//        Constructor<?> constructor = aClass.getConstructor();
+//
+//        Student student = (Student) constructor.newInstance();
+//
+//        student.setId(1003);
+//        student.setName("比企谷八潘");
+//        System.out.println(student);
+
+//        4.0
+        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+
+        Class<?> aClass = systemClassLoader.loadClass("javareview.reflect.Student");
 
         Constructor<?> constructor = aClass.getConstructor();
 
-        Student student = (Student) constructor.newInstance();
+        Student o = (Student) constructor.newInstance();
 
-        student.setId(1003);
-        student.setName("比企谷八潘");
+        o.setId(1004);
+        o.setName("宿海仁太");
 
-        System.out.println(student);
+        System.out.println(o);
 
 
     }
