@@ -18,7 +18,7 @@ public class Reflect01 {
 
 
     @Test
-    public void testField(){
+    public void testField() throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException, NoSuchFieldException {
 
         Class<Student> studentClass = Student.class;
 
@@ -28,11 +28,28 @@ public class Reflect01 {
 //            System.out.println(field);
 //        }
 
-        Field[] declaredFields = studentClass.getDeclaredFields();
+//        Field[] declaredFields = studentClass.getDeclaredFields();
+//
+//        for (Field declaredField : declaredFields) {
+//            System.out.println(declaredField);
+//        }
 
-        for (Field declaredField : declaredFields) {
-            System.out.println(declaredField);
-        }
+        Constructor<Student> constructor = studentClass.getConstructor();
+
+        constructor.setAccessible(true);
+
+        Field name = studentClass.getDeclaredField("name");
+
+
+        Student student = constructor.newInstance();
+
+        Field id = studentClass.getDeclaredField("id");
+
+        id.set(student,1005);
+
+        name.set(student,"桐谷和人");
+
+        System.out.println(student);
 
 
     }
