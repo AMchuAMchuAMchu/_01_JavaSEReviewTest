@@ -22,10 +22,16 @@ public class Reflect01 {
 
         Class<Student> studentClass = Student.class;
 
-        Field[] fields = studentClass.getFields();
+//        Field[] fields = studentClass.getFields();
+//
+//        for (Field field : fields) {
+//            System.out.println(field);
+//        }
 
-        for (Field field : fields) {
-            System.out.println(field);
+        Field[] declaredFields = studentClass.getDeclaredFields();
+
+        for (Field declaredField : declaredFields) {
+            System.out.println(declaredField);
         }
 
 
