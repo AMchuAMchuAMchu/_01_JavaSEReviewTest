@@ -34,18 +34,21 @@ public class Reflect01 {
 //            System.out.println(declaredField);
 //        }
 
+        Field name = studentClass.getDeclaredField("name");
+
+        Field id = studentClass.getDeclaredField("id");
+
         Constructor<Student> constructor = studentClass.getConstructor();
 
         constructor.setAccessible(true);
 
-        Field name = studentClass.getDeclaredField("name");
-
-
         Student student = constructor.newInstance();
 
-        Field id = studentClass.getDeclaredField("id");
+        id.setAccessible(true);
 
         id.set(student,1005);
+
+        name.setAccessible(true);
 
         name.set(student,"桐谷和人");
 
