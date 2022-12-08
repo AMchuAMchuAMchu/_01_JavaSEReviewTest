@@ -5,6 +5,7 @@ import com.sun.org.glassfish.external.statistics.Statistic;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.StampedLock;
 
 /**
  * Description ==> TODO
@@ -22,15 +23,22 @@ public class ThreadSecureTest01 {
 
 //    3.0 ReentrantLock rl = new ReentrantLock();
 
-    ReentrantReadWriteLock.WriteLock rrwl = new ReentrantReadWriteLock().writeLock();
+//    4.0 ReentrantReadWriteLock.WriteLock rrwl = new ReentrantReadWriteLock().writeLock();
+
+//    5.0 StampedLock sp = new StampedLock();
+
+
+
 
 //    1.0 public synchronized void salesTickets(){
     public void salesTickets(){
 //    2.0    synchronized (o) {
-
+        long timeStamp = 0L;
         try {
 //            rl.lock();
-            rrwl.lock();
+//            rrwl.lock();
+//            timeStamp = sp.writeLock();
+
 
             for (int i = 0; i < 100; i++) {
                 try {
@@ -44,7 +52,8 @@ public class ThreadSecureTest01 {
             }
         } finally {
 //            rl.unlock();
-            rrwl.lock();
+//            rrwl.unlock();
+//            sp.unlock(timeStamp);
         }
 
 
@@ -57,13 +66,5 @@ public class ThreadSecureTest01 {
         for (int i = 0; i < 3; i++) {
             new Thread(secureTest01::salesTickets).start();
         }
-
     }
-
-
-
-
-
-
-
 }
