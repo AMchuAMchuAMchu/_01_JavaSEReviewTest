@@ -104,7 +104,6 @@ public class ProducerConsumer01 {
 
     public static void main(String[] args) {
 
-
         Clerk clerk = new Clerk();
 
         Producer producer = new Producer(clerk);
