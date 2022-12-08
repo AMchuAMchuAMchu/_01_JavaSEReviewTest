@@ -3,6 +3,7 @@ package javareview.reflect;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -15,6 +16,20 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class Reflect01 {
 
+
+    @Test
+    public void testField(){
+
+        Class<Student> studentClass = Student.class;
+
+        Field[] fields = studentClass.getFields();
+
+        for (Field field : fields) {
+            System.out.println(field);
+        }
+
+
+    }
 
     @Test
     public void testReflect01() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ClassNotFoundException {
@@ -57,18 +72,21 @@ public class Reflect01 {
 //        System.out.println(student);
 
 //        4.0
-        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+//        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+//
+//        Class<?> aClass = systemClassLoader.loadClass("javareview.reflect.Student");
+//
+//        Constructor<?> constructor = aClass.getConstructor();
+//
+//        Student o = (Student) constructor.newInstance();
+//
+//        o.setId(1004);
+//        o.setName("宿海仁太");
+//
+//        System.out.println(o);
 
-        Class<?> aClass = systemClassLoader.loadClass("javareview.reflect.Student");
 
-        Constructor<?> constructor = aClass.getConstructor();
 
-        Student o = (Student) constructor.newInstance();
-
-        o.setId(1004);
-        o.setName("宿海仁太");
-
-        System.out.println(o);
 
 
     }
