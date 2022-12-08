@@ -17,7 +17,7 @@ public class Reflect01 {
 
 
     @Test
-    public void testReflect01() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void testReflect01() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 //        1.0
 //        Class<Student> studentClass = Student.class;
@@ -32,18 +32,30 @@ public class Reflect01 {
 //        System.out.println(">>"+student);
 
 //        2.0
-        Student student = new Student();
+//        Student student = new Student();
+//
+//        Class<? extends Student> aClass = student.getClass();
+//
+//        Constructor<? extends Student> constructor = aClass.getConstructor();
+//
+//        Student student1 = constructor.newInstance();
+//
+//        student1.setId(1002);
+//        student1.setName("樱满集");
+//
+//        System.out.println(student1);
 
-        Class<? extends Student> aClass = student.getClass();
+//        3.0
+        Class<?> aClass = Class.forName("javareview.reflect.Student");
 
-        Constructor<? extends Student> constructor = aClass.getConstructor();
+        Constructor<?> constructor = aClass.getConstructor();
 
-        Student student1 = constructor.newInstance();
+        Student student = (Student) constructor.newInstance();
 
-        student1.setId(1002);
-        student1.setName("樱满集");
+        student.setId(1003);
+        student.setName("比企谷八潘");
 
-        System.out.println(student1);
+        System.out.println(student);
 
 
     }
