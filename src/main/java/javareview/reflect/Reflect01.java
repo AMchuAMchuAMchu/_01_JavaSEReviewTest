@@ -40,8 +40,8 @@ public class Reflect01 {
 
         Student student1 = constructor.newInstance();
 
-        student.setId(1002);
-        student.setName("樱满集");
+        student1.setId(1002);
+        student1.setName("樱满集");
 
         System.out.println(student1);
 
